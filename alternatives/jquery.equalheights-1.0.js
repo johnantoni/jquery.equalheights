@@ -25,9 +25,18 @@
 				tallest = $(this).height();
 			}
 		});
+		
+		
+		
 		if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
-		return this.each(function() {
-			$(this).height(tallest).css("overflow","auto");
-		});
-	}
+			
+			return this.each(function() {
+				$(this).css({'*height' : tallest, 'min-height' : tallest }); //use min height for FF and height for IE browsers
+				
+				//for rounded corners support, check if we have any child elements and resize them as well:
+				$childElements = $(this).children('.autoPadDiv')
+				$childElements.css({'*height' : tallest, 'min-height' : tallest });
+				
+			});
+		}
 })(jQuery);
