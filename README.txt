@@ -1,0 +1,1 @@
+fixed with handling for ie6
